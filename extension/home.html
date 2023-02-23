@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <style type="text/css">
+        body {
+            margin: 15px;
+            margin-bottom: 55px;
+            overflow: auto;
+            background-color: #4C25E1;
+            color: white;
+        }
+        h1 {
+            font-weight: 500;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        h2 {
+            font-weight: 500;
+            margin:1px;
+            font-size: 10px;
+            text-align: left;
+        }
+        .switch {
+        position: relative;
+        display: inline-block;
+        width: 45px;
+        height: 28px;
+        }
+
+        .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        }
+
+        .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: gray;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 4px;
+        bottom: 4px;
+        background-color: #4a25e180;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        input:checked + .slider {
+        background-color: white;
+        }
+
+        input:focus + .slider {
+        box-shadow: 0 0 1px white;
+        }
+
+        input:checked + .slider:before {
+        -webkit-transform: translateX(18px);
+        -ms-transform: translateX(18px);
+        transform: translateX(18px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+        border-radius: 34px;
+        }
+
+        .slider.round:before {
+        border-radius: 50%;
+        }
+
+        .leftbox {
+                float:left; 
+                width:60%;
+                height:40px;
+                font-size: 15px;
+                box-sizing: border-box;
+                align-items: center;
+                top: 50%;
+                left: 50%;
+
+            }
+
+        .rightbox{
+            float:right;
+            width:20%;
+            height:40px;
+            box-sizing: border-box;
+            align-items: center;
+        }
+
+        .boxes {
+            margin-top: 30px;
+            box-sizing: border-box;
+        }
+
+        .explanation {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+    </style>
+
+    <body>
+        <h1>
+            <img src="images/boost_logo_ibackground.png" alt="icon" width="275px" height="auto">
+            <hr style="width:50%; opacity: 50%;">
+            <p class="explanation">AI monitor against severe toxicity</p>
+            <p><span id="website"></span></p>
+
+        </h1>
+        <br>
+        <h2>
+            <div class = "boxes">
+                <div class = "leftbox">
+                    <p>On/Off</p>
+                </div>
+                <div class = "rightbox">
+                    <label class="switch">
+                        <input type="checkbox" id="masterSwitch">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <br>
+            <div class = "boxes">
+                <div class = "leftbox">
+                    <p>Disable on this site</p>
+                </div>
+                <div class = "rightbox">
+                    <label class="switch">
+                        <input type="checkbox" id="urlSwitch">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <br>
+        </h2>
+
+    </body>
+
+    <script type="text/javascript" src="popup.js"></script>
+
+</html>

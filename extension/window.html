@@ -1,0 +1,81 @@
+<style type="text/css">
+
+    #leftbox {
+            float:left; 
+            width:60%;
+            height:40px;
+            font-size: 15px;
+            box-sizing: border-box;
+            align-items: center;
+            top: 50%;
+            left: 50%;
+        }
+
+    #rightbox{
+        float: right;
+        width:20%;
+        height:40px;
+        box-sizing: border-box;
+        align-items: right;
+
+    }
+
+    #boxesab {
+        box-sizing: border-box;
+    }
+
+    .explanation {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    #window_rin {
+        background: rgba(46,18,152,1);
+        background: linear-gradient(38deg, rgba(46,18,152,1) 0%, rgba(76,37,225,1) 40%, rgb(207, 205, 205) 100%);
+        height: 350px;
+        width: 220px;
+        color: white;
+        border-radius: 10%;
+        padding: 20px;
+        transition: opacity 0.3s ease-in;
+        opacity: 0;
+        position: fixed;
+        display: none;
+    }
+
+    #header_rocket {
+        height: 50px;
+    }
+
+    #main_rocket {
+        align-items: center;
+        margin: auto;
+        width: 65%;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+</style>
+
+<div id="window_rin">
+    <div id="header_rocket">
+        <div id = "boxesab">
+            <div id = "leftbox">
+                <img id = "whiterocketimgl00" src="images/whiterocket.png" style="width: 30px; height: auto;">
+            </div>
+            <div id = "rightbox">
+                    <img id = "whiterocketx00" src="images/x.png" style="width: 30px; height: auto; cursor: pointer;">
+            </div>
+        </div>
+    </div>
+    <div id="main_rocket">
+        <div>
+            <img id="rocket_response_img" src="" style="width: 125px;">
+        </div>
+        <div>
+            <p id="rocket_response_txt" style="align-self: center;">
+                  
+            </p>
+        </div>
+    </div>
+</div>
