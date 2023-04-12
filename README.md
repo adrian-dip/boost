@@ -72,3 +72,4 @@ Why not mark the boundary at 50%? The average 50-percenter has around 3 Reddit u
 
 An interesting option is to use a sigmoid gate instead of a linear layer so that you can define a performance boundary arbitrarily during inference.
 
+### Sources of Error
