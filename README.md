@@ -8,7 +8,7 @@ This is a partial release of the Boost models, app and dataset. Due to their siz
 
 ## Serving the model
 
-To serve the model (backbone: `deberta-xsmall`) using this code, you need to upload it to a Flask server that supports Pytorch. The endpoint is a Chrome extension that detects typing and automatically sends the content a few seconds after you stop. Inference is fast enough on a single CPU core, which can process a couple of queries per second. 
+To serve the model (backbone: `deberta-small`) using this code, you need to upload it to a Flask server that supports Pytorch. The endpoint is a Chrome extension that detects typing and automatically sends the content a few seconds after you stop. Inference is fast enough on a single CPU core, which can process a couple of queries per second. 
 
 ## Full model
 
@@ -16,6 +16,57 @@ If you want to use the full model, which processes text + images, you need to tr
 
 ## Architecture
 
-The text model is a text transformer + LSTM + feed-forward pooling + linear layer. The full model has the following architecture:
+The text model is a text transformer + a few tricks to increase accuracy. The full model has the following architecture:
 
 ![Diagram](diagram1.png)
+
+## Error Analysis
+
+###Tables
+
+#### Full model
+
+| Label  | Precision | Recall | f1-score | 
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Bottom 50%  | 0.86  | 0.80 | 0.83 |
+| Top 20%  | 0.82  | 0.86 | 0.84 |
+
+| Register  | Precision (simple average) | 
+| ------------- | ------------- | 
+| Web  | 0.79  | 
+| Social | 0.92  |
+| News/Magazine  | 0.94  | 
+| Fiction  | 0.97  | 
+
+| Topic  | Precision (simple average) | 
+| ------------- | ------------- | 
+| Sports | 0.75  |
+| Politics  | 0.88  | 
+| Science  | 0.84  | 
+
+#### Text model
+
+| Label  | Precision | Recall | f1-score | 
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Bottom 50%  | 0.80  | 0.76 | 0.78 |
+| Top 20%  | 0.77  | 0.80 | 0.78  |
+
+| Register  | Precision (simple average) | 
+| ------------- | ------------- | 
+| Web  | 0.74  | 
+| Social | 0.82  |
+| News/Magazine  | 0.88  | 
+| Fiction  | 0.96  | 
+
+| Topic  | Precision (simple average) | 
+| ------------- | ------------- | 
+| Sports | 0.73  |
+| Politics  | 0.77  | 
+| Science  | 0.82  | 
+
+###Missing quintile
+
+We only use the top 20% and bottom 50% and ask the model to create a binary boundary to predict in which bin a piece of content will fall. Experimenting with 10 bins for each decile (10%), I found there was great overlap between the deciles. The farther away you move from the boundary, the less likely it is the model will make a mistake. Similarly, the overlap between bottom 10% and top 10% was very low. 
+
+Why not mark the boundary at 50%? The average 50-percenter has around 3 Reddit upvotes and a few shares on Twitter, just to give two examples--hardly what someome would consider a highly performant comment. Further, the gap reduces the error rate (at the expense of some recall), even when you include the missing comments in the test set. The middle ground on the engagement scale is a very noisy region, where a lot of content of disputed value (such as controversial content) can be found, along with good and bad comments that didn't get enough exposure. 
+
