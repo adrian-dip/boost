@@ -34,8 +34,8 @@ The text model is a text transformer + a few tricks to increase accuracy. The fu
 | Register (sample) | Precision (simple average) | 
 | ------------- | ------------- | 
 | Web  | 0.79  | 
-| Social | 0.92  |
-| News/Magazine  | 0.94  | 
+| Social | 0.87  |
+| News/Magazine  | 0.92  | 
 | Fiction  | 0.97  | 
 
 | Topic (sample) | Precision (simple average) | 
@@ -54,7 +54,7 @@ The text model is a text transformer + a few tricks to increase accuracy. The fu
 | Register (sample) | Precision (simple average) | 
 | ------------- | ------------- | 
 | Web  | 0.74  | 
-| Social | 0.82  |
+| Social | 0.81  |
 | News/Magazine  | 0.88  | 
 | Fiction  | 0.96  | 
 
