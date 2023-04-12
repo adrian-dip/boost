@@ -27,7 +27,7 @@ The text model is a text transformer + a few tricks to increase accuracy. The fu
 #### Full model
 
 | Label  | Precision | Recall | f1-score | 
-| ------------- | ------------- | ------------- | ------------- | ------------- |
+| ------------- | ------------- | ------------- | ------------- | 
 | Bottom 50%  | 0.86  | 0.80 | 0.83 |
 | Top 20%  | 0.82  | 0.86 | 0.84 |
 
@@ -47,7 +47,7 @@ The text model is a text transformer + a few tricks to increase accuracy. The fu
 #### Text model
 
 | Label  | Precision | Recall | f1-score | 
-| ------------- | ------------- | ------------- | ------------- | ------------- |
+| ------------- | ------------- | ------------- | ------------- | 
 | Bottom 50%  | 0.80  | 0.76 | 0.78 |
 | Top 20%  | 0.77  | 0.80 | 0.78  |
 
