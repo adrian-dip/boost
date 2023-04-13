@@ -72,7 +72,7 @@ We only use the top 20% and bottom 50% comments for training and ask the model t
 
 _Confusion matrix for Boost: 1 = bottom 10%, 10 = top 10%_
 
-Interestingly, the top and bottom comments share some characteristics, at least more than they do with other deciles. The diagonal is marked and the middle region is noisy, and the farther away you move from the boundary, the less likely it is the model will make mistakes.
+Interestingly, the top and bottom comments share some characteristics, at least more than they do with other deciles. Right comment, wrong audience. The diagonal is marked and the middle region is noisy, and the farther away you move from the boundary, the less likely it is the model will make mistakes.
 
 Why not mark the boundary at 50%? The average 50-percenter has around 3 Reddit upvotes and a few shares on Twitter, just to give two examples--hardly what someome would consider highly performant. Further, the gap reduces the error rate (at the expense of some recall), even including the missing comments in the test set. The middle ground on the engagement scale is very noisy, where a lot of content of disputed value (such as controversial content) can be found, along with good and bad comments that didn't get enough exposure. 
 
