@@ -66,9 +66,14 @@ The text model is a text transformer + a few tricks to increase accuracy. The fu
 
 ### Missing quintile
 
-We only use the top 20% and bottom 50% comments for training and ask the model to create a binary boundary to predict in which bin a piece of content will fall. Experimenting with 10 bins, one for each decile (10%), we find there is great overlap among neighboring deciles. The farther away you move from the boundary, the less likely it is the model will make mistakes. Similarly, the overlap between bottom 10% and top 10% is very low. 
+We only use the top 20% and bottom 50% comments for training and ask the model to create a binary boundary to predict in which bin a piece of content will fall. Experimenting with 10 bins, one for each decile (10%), we find there is great overlap among neighboring deciles. 
 
-Why not mark the boundary at 50%? The average 50-percenter has around 3 Reddit upvotes and a few shares on Twitter, just to give two examples--hardly what someome would consider highly performant. Further, the gap reduces the error rate (at the expense of some recall), even when you include the missing comments in the test set. The middle ground on the engagement scale is a very noisy region, where a lot of content of disputed value (such as controversial content) can be found, along with good and bad comments that didn't get enough exposure. 
+![Confusionmatrix](confusion_matrix.png)
+_Confusion matrix for Boost: 1 = bottom 10%, 10 = top 10%
+
+Interestingly, the top and bottom comments share some characteristics, at least more than they do with other deciles. The diagonal is marked and the middle region is noisy, and the farther away you move from the boundary, the less likely it is the model will make mistakes.
+
+Why not mark the boundary at 50%? The average 50-percenter has around 3 Reddit upvotes and a few shares on Twitter, just to give two examples--hardly what someome would consider highly performant. Further, the gap reduces the error rate (at the expense of some recall), even including the missing comments in the test set. The middle ground on the engagement scale is very noisy, where a lot of content of disputed value (such as controversial content) can be found, along with good and bad comments that didn't get enough exposure. 
 
 An interesting option is to use a sigmoid gate instead of a linear layer so that you can define a performance boundary arbitrarily during inference.
 
@@ -82,6 +87,6 @@ You can remedy a lot of the error by including more and more context, which is w
 | ------------- | ------------- | ------------- | 
 |Oh, you'd be surprised|17,891|31,611|
 |/thread|854|706|
-|You don't want to find out|196|238|
+|Do you want to find out?|196|238|
 
 Longer comments have higher accuracy, but it's only a couple of percentage points and negligible when the number of words > 15.
