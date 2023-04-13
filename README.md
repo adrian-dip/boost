@@ -69,6 +69,7 @@ The text model is a text transformer + a few tricks to increase accuracy. The fu
 We only use the top 20% and bottom 50% comments for training and ask the model to create a binary boundary to predict in which bin a piece of content will fall. Experimenting with 10 bins, one for each decile (10%), we find there is great overlap among neighboring deciles. 
 
 ![Confusionmatrix](confusion_matrix.png)
+
 _Confusion matrix for Boost: 1 = bottom 10%, 10 = top 10%
 
 Interestingly, the top and bottom comments share some characteristics, at least more than they do with other deciles. The diagonal is marked and the middle region is noisy, and the farther away you move from the boundary, the less likely it is the model will make mistakes.
