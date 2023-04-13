@@ -66,10 +66,22 @@ The text model is a text transformer + a few tricks to increase accuracy. The fu
 
 ### Missing quintile
 
-We only use the top 20% and bottom 50% and ask the model to create a binary boundary to predict in which bin a piece of content will fall. Experimenting with 10 bins, one for each decile (10%), I found there was great overlap among the deciles. The farther away you move from the boundary, the less likely it is the model will make mistakes. Similarly, the overlap between bottom 10% and top 10% was very low. 
+We only use the top 20% and bottom 50% comments for training and ask the model to create a binary boundary to predict in which bin a piece of content will fall. Experimenting with 10 bins, one for each decile (10%), we find there is great overlap among neighboring deciles. The farther away you move from the boundary, the less likely it is the model will make mistakes. Similarly, the overlap between bottom 10% and top 10% is very low. 
 
 Why not mark the boundary at 50%? The average 50-percenter has around 3 Reddit upvotes and a few shares on Twitter, just to give two examples--hardly what someome would consider highly performant. Further, the gap reduces the error rate (at the expense of some recall), even when you include the missing comments in the test set. The middle ground on the engagement scale is a very noisy region, where a lot of content of disputed value (such as controversial content) can be found, along with good and bad comments that didn't get enough exposure. 
 
 An interesting option is to use a sigmoid gate instead of a linear layer so that you can define a performance boundary arbitrarily during inference.
 
 ### Sources of Error
+
+A lot of the error comes from identical or similar content in different contexts and times. As you can imagine, what's funny today eventually becomes annoying, opinions change, famous people become disgraced, different people sometimes hold ortogonal opinions, and expectations about what you have to say vary depending on who you are. 
+
+You can remedy a lot of the error by including more and more context, which is what the image transformer does by including the stimuli that produces the response, and information about the topic, register, and website, and even by cheating (for example, by including information about trends on the page, location, time.)
+
+| Comment  | Negative Ocurrences | Positive ocurrences |  
+| ------------- | ------------- | ------------- | 
+|Oh, you'd be surprised|17,891|31,611|
+|/thread|854|706|
+|You don't want to find out|196|238|
+
+Longer comments have higher accuracy, but it's only a couple of percentage points.
