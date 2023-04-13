@@ -84,4 +84,4 @@ You can remedy a lot of the error by including more and more context, which is w
 |/thread|854|706|
 |You don't want to find out|196|238|
 
-Longer comments have higher accuracy, but it's only a couple of percentage points.
+Longer comments have higher accuracy, but it's only a couple of percentage points and negligible when the number of words > 15.
