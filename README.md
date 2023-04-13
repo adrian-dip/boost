@@ -89,4 +89,6 @@ You can remedy a lot of the error by including more and more context, which is w
 |/thread|854|706|
 |Do you want to find out?|196|238|
 
+Content with a cosine similarity of 0.85 or more made up almost 3% of the dataset! No wonder the model gets confused. 
+
 Longer comments have higher accuracy, but it's only a couple of percentage points and negligible when the number of words > 15.
