@@ -4,7 +4,7 @@ Boost is a model that predicts the engagement (shares, likes, likelihood of goin
 
 This repo includes the model and dataset for text and a JS endpoint to serve it. 
 
-This is a partial release of the Boost models, app and dataset. Due to their size, they have to be downloaded from here:  . 
+This is a partial release of the Boost models. Due to their size, they have to be downloaded from here: https://drive.google.com/drive/folders/1QN9OdvZP2EB4NlHDA5tQJrE6rn8R3ckx?usp=share_link. 
 
 ## Serving the model
 
