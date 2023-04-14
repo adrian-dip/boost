@@ -12,7 +12,7 @@ To serve the model (backbone: `deberta-small`) using this code, you need to uplo
 
 ## Full model
 
-If you want to use the full model, which processes text + images, you need to train it yourself using the scripts on the directory `full_model/` using images you scrape. You can find scraping repos on my profile. The model on the link is only the text model and is less accurate (-5% to -10%). 
+If you want to use the full model, which processes text + images, you need to train it yourself using the scripts on the directory `full_model/` using images you scrape. Unfortunately, I can't share the datasets for copyright reasons. However, you can find scraping repos on my profile. 
 
 ## Architecture
 
